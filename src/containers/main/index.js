@@ -10,6 +10,7 @@ import MainDrawer from '../drawer'
 import Inicio from "../../views/Dashboard/Dashboard"
 import Perfil from '../routes/profile'
 import Administrativo from '../routes/personal/administrativo'
+import InfluencerSocial from '../routes/personal/social'
 
 
 
@@ -202,6 +203,7 @@ class Main extends Component {
                                             <Route exact path="/" component={Inicio} />
                                             <Route path="/personal/administrative" component={Administrativo} />
                                             <Route path="/profile" component={Perfil} />                                            
+                                            <Route path="/influencers/sociales" component={InfluencerSocial} />
                                         </div>
                                     </Switch>
                                 </Grid>

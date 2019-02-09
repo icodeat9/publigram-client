@@ -32,7 +32,7 @@ const styles = theme => ({
         }),
         // backgroundColor: "#1b1b1b",
         // backgroundColor: "rgba(27, 27, 27, 1)",
-        backgroundImage: "url(https://biznology.com/wp-content/uploads/2016/04/social_media_strategy111.jpg)",        
+        // backgroundImage: "url(https://biznology.com/wp-content/uploads/2016/04/social_media_strategy111.jpg)",        
         backgroundSize: "cover",
         backgroundPosition: "center",
         // opacity: 0.4,
@@ -130,6 +130,18 @@ class Login extends Component {
         }
     }
     
+    expandInfluencers = () => {
+        const { actualPage } = this.props;
+        // alert(actualPage)
+        switch (actualPage) {
+            case "influencers": return true;
+            case "experimentos": return true;
+            case "sociales": return true;
+            case "comedia": return true;
+            case "maquillaje": return true;
+        }
+    }
+    
     handleExpand = (sub) => {
         let { menu } = this.state;
         // menu[sub] = true;
@@ -194,6 +206,23 @@ class Login extends Component {
                             <Link to="/personal/administrative" className={classes.link}>
                                 <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("administrativo")}>
                                     <ListItemText classes={{ primary: actualPage == "administrativo" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Administrative" />
+                                </ListItem>
+                            </Link>                            
+                        </List>
+                    </Collapse>                                        
+                    {/* Influencers */}
+                    <ListItem button className={classNames({ [classes.listSelected]: (this.expandInfluencers()), [classes.listNoSelected]: !(this.expandInfluencers()) })} onClick={() => this.handleExpand("influencers")}>
+                        <ListItemIcon button>
+                            <IconEmployees className={classNames({ [classes.iconsOpen]: open, [classes.iconsClose]: !open })} />
+                        </ListItemIcon>
+                        <ListItemText classes={{ primary: (this.expandInfluencers()) ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Influencers" />
+                        {menu.influencers ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={menu.influencers} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <Link to="/influencers/sociales" className={classes.link}>
+                                <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("sociales")}>
+                                    <ListItemText classes={{ primary: actualPage == "sociales" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Sociales" />
                                 </ListItem>
                             </Link>                            
                         </List>
