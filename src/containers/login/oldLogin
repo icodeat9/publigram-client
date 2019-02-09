@@ -1,0 +1,32 @@
+<Grid container className={classes.root} style={{ backgroundColor: "white", paddingTop: 100 }} >
+                    <Grid item xs={12}>
+                        <Grid
+                            container
+                            spacing={16}
+                            className={classes.demo}
+                            alignItems={"center"}
+                            direction={"row"}
+                            // direction={"col"}
+                            justify={"center"}
+                        >
+                            <Grid item>
+                                <Paper className={classes.loginPaper} style={{ textAlign: "center" }} >
+                                    <img src="http://helidosa.com/wp-content/uploads/2017/11/Helidosa_2017-05.png" width={300} />
+                                    <br />
+                                    <FormControl className={classes.formControl} >
+                                        <TextField variant="outlined" label="User" value={form.user} onChange={(e) => this.handleForm(e, "user")} />
+                                        <br />
+                                        <TextField variant="outlined" label="Password" type="password" value={form.pass} onChange={(e) => this.handleForm(e, "pass")} />
+                                        <br />
+                                        <Button id="botones" variant="contained" onClick={accessMain} >
+                                        {loading? <CircularProgress style={{color: "white"}}  />:
+                                            <Typography style={{color: "white"}}>Login</Typography>
+                                        }
+                                        </Button>
+                                    </FormControl>
+                                    <MyDialog open={dialog.open} title={dialog.title} onClose={this.closeDialog} />
+                                </Paper>
+                            </Grid>                            
+                        </Grid>
+                    </Grid>
+                </Grid >

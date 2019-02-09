@@ -1,0 +1,244 @@
+import React, { Component } from 'react'
+import { Drawer, IconButton, Divider, ListItemText, List, ListItemIcon, ListItem, Collapse, Avatar, Typography, Button, Slide } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
+import classNames from 'classnames';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import IconDashboard from '@material-ui/icons/Dashboard';
+import IconEmployees from '@material-ui/icons/SupervisorAccount';
+import IconAeronave from '@material-ui/icons/AirplanemodeActive';
+import IconFolder from '@material-ui/icons/Folder';
+import { NavLink, Link } from 'react-router-dom'
+
+import { LibraryBooks, ExpandLess, ExpandMore, CollectionsBookmark, EventNote, CreditCard, ContactPhone, Notifications, People } from '@material-ui/icons'
+
+const drawerWidth = 240;
+
+const styles = theme => ({
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+        whiteSpace: 'nowrap',
+    },
+    drawerOpen: {
+        width: drawerWidth,
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    drawerClose: {
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        // backgroundColor: "#007360",
+        overflowX: 'hidden',
+        width: theme.spacing.unit * 7 + 1,
+        [theme.breakpoints.up('sm')]: {
+            width: theme.spacing.unit * 9 + 1,
+        },
+    },
+    toolbar: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        padding: '0 8px',
+        ...theme.mixins.toolbar,
+        backgroundColor: "#33439c"
+    },
+    iconsOpen: {
+        // color: "blue"
+    },
+    iconsClose: {
+        // color: "white"
+        color: "#3f51b5"
+    },
+    nested: {
+        paddingLeft: theme.spacing.unit * 8,
+    },
+    subMenu_selected: {
+        color: "#3f51b5",
+        fontWeight: "bold"
+    },
+    subMenu_noselected: {
+        color: "black",
+
+    },
+    avatar: {
+        margin: 10,
+        width: 100,
+        height: 100,
+
+        borderColor: "#3f51b5"
+    },
+    chevronleft: {
+        color: "white"
+    },
+    profileButtons: {
+        padding: "1px 8px 16px"
+    },
+    infoButton: {
+        
+    }
+})
+
+class Login extends Component {
+    state =
+        {
+            menu: { personal: false, aeronave:false,documentos: false, inicio: false }
+        }
+
+    RedirectToPage(page) {
+        let { menu } = this.state;
+        menu.personal = false;
+        this.setState({ menu }, () => {
+            this.props.toPage(page);
+            this.props.closeDrawer();
+        })
+    }
+
+    expandPersonal = () => {
+        const { actualPage } = this.props;
+        // alert(actualPage)
+        switch (actualPage) {
+            case "administrativo": return true;
+            case "pilotos": return true;
+            case "medicos": return true;
+            case "tecnicos": return true;
+        }
+    }
+    
+    expandAeroname = () => {
+        const { actualPage } = this.props;
+        switch (actualPage) {
+            case "Airplane": return true;
+            case "Helicopter": return true;
+        }
+    }
+
+    handleExpand = (sub) => {
+        let { menu } = this.state;
+        // menu[sub] = true;
+        menu[sub] = !menu[sub];
+        this.setState({ menu }, () => {
+            if (menu[sub]) {
+                this.props.openDrawer()
+            }
+        })
+    }
+
+    render() {
+        const { classes, open, theme, closeDrawer, toPage, actualPage, unlog } = this.props;
+        const { menu } = this.state;
+        return (
+            <Drawer variant="permanent"
+                className={classNames(classes.drawer, {
+                    [classes.drawerOpen]: open,
+                    [classes.drawerClose]: !open,
+                })}
+                classes={{
+                    paper: classNames({
+                        [classes.drawerOpen]: open,
+                        [classes.drawerClose]: !open,
+                    }),
+                }}
+                open={open}>
+                <div className={classes.toolbar}>
+                    <div style={{display: open?"":"none"}} >
+                        <Slide in={open}>
+                            <div>
+                                <Avatar alt="profile" className={classes.avatar} src="https://image.flaticon.com/icons/svg/149/149071.svg" width={100} />
+                                <Typography style={{ color: "white" }} variant="subtitle1">LOGARITMOS SRL</Typography>
+                                <br />
+                                <Link to="/perfil">
+                                    <Button style={{padding: "1px 8px 16px", color: "gray"}} variant="text" >Profile</Button>
+                                </Link>
+                                <Button onClick={unlog} style={{padding: "1px 8px 16px"}} variant="text" color="secondary" >Sign out</Button>
+                            </div>
+                        </Slide>
+                    </div>
+                    <IconButton onClick={() => closeDrawer()}>
+                        <ChevronLeftIcon className={classes.chevronleft} />
+                    </IconButton>
+                </div>
+                <Divider />
+                <List>
+                    {/* Inicio */}
+                    <Link to="/">
+                        <ListItem button onClick={() => this.RedirectToPage("inicio")}>
+                            <ListItemIcon button>
+                                <IconDashboard className={classNames({ [classes.iconsOpen]: open, [classes.iconsClose]: !open })} />
+                            </ListItemIcon>
+                            <ListItemText classes={{ primary: (actualPage == "inicio") ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Home" />
+                        </ListItem>
+                    </Link>
+                    {/* Personal */}
+                    <ListItem button onClick={() => this.handleExpand("personal")}>
+                        <ListItemIcon button>
+                            <IconEmployees className={classNames({ [classes.iconsOpen]: open, [classes.iconsClose]: !open })} />
+                        </ListItemIcon>
+                        <ListItemText classes={{ primary: (this.expandPersonal()) ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Personal" />
+                        {menu.personal ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={menu.personal} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <Link to="/personal/administrativo">
+                                <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("administrativo")}>
+                                    <ListItemText classes={{ primary: actualPage == "administrativo" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Administrative" />
+                                </ListItem>
+                            </Link>
+                            <Link to="/personal/pilotos">
+                                <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("pilotos")}>
+                                    <ListItemText classes={{ primary: actualPage == "pilotos" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Pilots" />
+                                </ListItem>
+                            </Link>
+                            <Link to="/personal/medicos">
+                                <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("medicos")}>
+                                    <ListItemText classes={{ primary: actualPage == "medicos" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Doctors" />
+                                </ListItem>
+                            </Link>
+                            <Link to="/personal/tecnicos">
+                                <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("tecnicos")}>
+                                    <ListItemText classes={{ primary: actualPage == "tecnicos" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Technicians" />
+                                </ListItem>
+                            </Link>
+                        </List>
+                    </Collapse>
+                    {/* AERONAME */}
+                    <ListItem button onClick={() => this.handleExpand("aeronave")}>
+                        <ListItemIcon button>
+                            <IconAeronave className={classNames({ [classes.iconsOpen]: open, [classes.iconsClose]: !open })} />
+                        </ListItemIcon>
+                        <ListItemText classes={{ primary: (this.expandAeroname()) ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Aircraft" />
+                        {menu.aeronave ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={menu.aeronave} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <Link to="/aeronave/airplane">
+                                <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("airplane")}>
+                                    <ListItemText classes={{ primary: actualPage == "airplane" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Airplane" />
+                                </ListItem>
+                            </Link>
+                            <Link to="/aeronave/pilotos">
+                                <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("helicopter")}>
+                                    <ListItemText classes={{ primary: actualPage == "helicopter" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Helicopter" />
+                                </ListItem>
+                            </Link>                            
+                        </List>
+                    </Collapse>
+                    <Link to="/documentos">
+                        <ListItem button onClick={() => this.RedirectToPage("documentos")}>
+                            <ListItemIcon button>
+                                <IconFolder className={classNames({ [classes.iconsOpen]: open, [classes.iconsClose]: !open })} />
+                            </ListItemIcon>
+                            <ListItemText classes={{ primary: (actualPage == "documentos") ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Documents" />
+                        </ListItem>
+                    </Link>
+                </List>
+            </Drawer>
+        )
+    }
+}
+
+export default withStyles(styles)(Login);
+// export default Login;
