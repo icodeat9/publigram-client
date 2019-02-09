@@ -16,6 +16,7 @@
     "react": "^16.6.3",
     "react-chartist": "^0.13.2",
     "react-dom": "^16.6.3",
+    "react-grid-system": "^4.4.2",
     "react-navigation": "^3.0.9",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",

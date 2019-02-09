@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './styles/styles.css'
-import Login from './containers/login'
+import './styles/landing-page.css'
+// import Login from './containers/login'
+import Login from './containers/routes/landingpage'
 import Main from './containers/main'
 import { BrowserRouter, Router } from 'react-router-dom';
 import axios from 'axios'
@@ -9,7 +11,7 @@ class App extends Component {
 
   state =
     {
-      logged: true
+      logged: false
     }
 
     componentDidMount()
