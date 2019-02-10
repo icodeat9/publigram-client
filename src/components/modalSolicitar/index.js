@@ -7,6 +7,7 @@ import { AccountCircle, AccountCircleOutlined, Face, FaceOutlined, Work, WorkOut
 import DialogError from '../modal_error'
 
 import DetallesInfluencer from './detalles.js'
+import SolicitarInfluencer from './solicitar.js'
 
 import NavPills from '../NavPills/NavPills'
 import moment from 'moment'
@@ -37,11 +38,11 @@ class Window extends Component {
                 birthDate: new Date(),
                 cedula: "",
                 email: "",
-                instagram: "",
-                youtube: "",
+                instagram: false,
+                youtube: false,
+                budget: 0,
                 country: "República Dominicana",
                 contenido: 0,
-
 
             },
             dialog: { open: false, title: "" },
@@ -140,12 +141,20 @@ class Window extends Component {
         this.setState({ dialog })
     }
 
+    sendRequest = () =>
+    {
+        let {dialog, open} = this.state;
+        dialog.title = "Solicitud enviada"
+        dialog.open = true;
+        this.setState({dialog})
+    }
+
     render() {
-        const { form, dialog, errors, actual_id, loading, actual_contact, form_contacts, contact_types, data_contacts } = this.state;
-        const { classes, open, handleModal } = this.props;
+        const { form, dialog, errors, loading, actual_contact, form_contacts, contact_types, data_contacts } = this.state;
+        const { classes, open, handleModal, influencer } = this.props;
         // alert(moment("1997-12-16").format("YYYY-MM-DD HH:mm:ss"))
         return (
-            <Dialog open={open} onBackdropClick={handleModal} fullScreen >
+            <Dialog open={open} onBackdropClick={handleModal} maxWidth="lg" >
                 {/* <DialogTitle>New employee</DialogTitle> */}
                 <DialogContent style={{ textAlign: "center" }} >
                     <NavPills
@@ -161,7 +170,7 @@ class Window extends Component {
                                 tabIcon: FaceOutlined,
                                 tabContent: (
                                     // {/* Datos de la persona */}
-                                    <DetallesInfluencer loading={loading} errors={errors} sendData={this.sendData} classes={classes} handleformData={this.handleformData} handleDates={this.handleDates}
+                                    <DetallesInfluencer influencer={influencer} loading={loading} errors={errors} sendData={this.sendData} classes={classes} handleformData={this.handleformData} handleDates={this.handleDates}
                                         form={form} />
                                 )
                             },
@@ -169,7 +178,8 @@ class Window extends Component {
                                 tabButton: "Solicitar",
                                 tabIcon: WorkOutline,
                                 tabContent: (
-                                    <h1>Nada</h1>
+                                    <SolicitarInfluencer loading={loading} errors={errors} sendRequest={this.sendRequest} classes={classes} handleformData={this.handleformData} handleDates={this.handleDates}
+                                    form={form} />
                                 )
                             },
 
@@ -190,3 +200,8 @@ class Window extends Component {
 }
 
 export default withStyles(styles)(Window)
+
+// Promedio de views de ultimos 10
+// Promedio de views general
+// Cantidad de comentario
+// Promedi

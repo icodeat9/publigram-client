@@ -86,7 +86,7 @@ const InfluencersCards = (props) =>
         {/* <h4 className={classes.cardTitle}>{v.nombre}</h4> */}
         <Typography variant="h5">{v.nombre}</Typography>
         <Typography variant="inherit">{v.contenido}</Typography>        
-        <Button color="danger" round onClick={openSolicitar} >
+        <Button color="danger" round onClick={() => openSolicitar(v)} >
           Solicitar
       </Button>
       </CardBody>
@@ -99,12 +99,12 @@ class UserProfile extends Component {
   
   state =
   {
-    modal: false
+    modal: false, influencer: {}
   }
 
-  openModal = () =>
+  openModal = (influencer) =>
   {
-    this.setState({modal: true})
+    this.setState({modal: true, influencer})
   }
   closeModal = () =>
   {
@@ -114,7 +114,7 @@ class UserProfile extends Component {
   render()
   {
     const { classes } = this.props;
-    const {modal} = this.state;
+    const {modal, influencer} = this.state;
     return (
       <Slide in>
         <div>
@@ -123,7 +123,7 @@ class UserProfile extends Component {
             <InfluencersCards classes={classes} data={pruebaData} openSolicitar={this.openModal} />                  
   
           </GridContainer>
-          <ModalSolicitar open={modal} handleModal={this.closeModal} />
+          <ModalSolicitar influencer={influencer} open={modal} handleModal={this.closeModal} />
         </div>
       </Slide>
     );

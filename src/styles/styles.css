@@ -4,6 +4,10 @@ html {
 #primaryButton {
     background: linear-gradient(60deg, #ef5350, #e53935);
 }
+#primaryText {
+    color: #e53935;
+    font-weight: bold
+}
 #secondaryButton {
     border-color: linear-gradient(60deg, #ef5350, #e53935);    
 }
