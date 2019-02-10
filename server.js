@@ -8,7 +8,7 @@ const moment = require("moment")
 //     "clean": "rimraf dist/*",
 //     "build": "webpack --progress --bail --env dist -p",
 //     "start": "webpack-dev-server --hot --open"
-//   },
+//   },////
 //Para publicar: "start": "node server/server.js"
 const path = require("path");
 app.use(express.static(path.resolve(__dirname, "build")))
