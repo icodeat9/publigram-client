@@ -193,6 +193,15 @@ class Login extends Component {
                             <ListItemText classes={{ primary: (actualPage == "inicio") ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Home" />
                         </ListItem>
                     </Link>
+                    {/* Historial */}
+                    <Link to="/historial" className={classes.link}>
+                        <ListItem button className={classNames({ [classes.listSelected]: (actualPage == "historial"), [classes.listNoSelected]: !(actualPage == "historial") })}  onClick={() => this.RedirectToPage("historial")}>
+                            <ListItemIcon button>
+                                <IconDashboard className={classNames({ [classes.iconsOpen]: open, [classes.iconsClose]: !open })} />
+                            </ListItemIcon>
+                            <ListItemText classes={{ primary: (actualPage == "historial") ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Historial" />
+                        </ListItem>
+                    </Link>
                     {/* Personal */}
                     <ListItem button className={classNames({ [classes.listSelected]: (this.expandPersonal()), [classes.listNoSelected]: !(this.expandPersonal()) })} onClick={() => this.handleExpand("personal")}>
                         <ListItemIcon button>
