@@ -193,7 +193,7 @@ class Main extends Component {
                     </AppBar>
                     {renderMenu}
                     <MainDrawer unlog={unlog} actualPage={page} toPage={this.toPage} open={open} closeDrawer={this.closeDrawer} openDrawer={this.openDrawer} theme={theme} />
-                    <Grid container style={{ overflowY: "scroll", height: "90vh", overflowX: "hidden" }}>
+                    <Grid container style={{ overflowY: "scroll", height: "95vh", overflowX: "hidden" }}>
                         <Grid item xs={12}>
                             <br />
                             <Grid container justify="center" spacing={40} >

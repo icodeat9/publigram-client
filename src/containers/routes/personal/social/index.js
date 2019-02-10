@@ -34,8 +34,61 @@ const pruebaData = [
     alcanceVideo:"432,400",
     seguidoresInstagram:"542,000",
     alcancePost:"277,650"
-
-  }
+  },
+  {
+    foto:"https://scontent-mia3-2.cdninstagram.com/vp/918c695ecead127e498ae10fad74fbb7/5CF54233/t51.2885-19/s150x150/29740730_1562428923874884_1351854416843505664_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com",
+    contenido: "Noticias, presentadora",
+    nombre: "Cheddy Garcia",
+    seguidoresYoutube:"16,061",
+    alcanceVideo:"1,253",
+    seguidoresInstagram:"2,000,000",
+    alcancePost:"225,000"
+  },
+  {
+    foto:"https://scontent-mia3-2.cdninstagram.com/vp/c327f94f21e9987cbaa78f4f5cc8022b/5CF1EEEF/t51.2885-19/s150x150/44577975_256546555049255_8765341649074126848_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com",
+    contenido: "Comedia, presentador",
+    nombre: "Liondy Ozoria",
+    seguidoresYoutube:"3,007",
+    alcanceVideo:"3,625",
+    seguidoresInstagram:"1,300,000",
+    alcancePost:"89,465"
+  },
+  {
+    foto:"https://scontent-mia3-2.cdninstagram.com/vp/eae9751c7ae762dbb03db004184a5051/5CFCC445/t51.2885-19/s150x150/44297763_305597446930165_3428564270890090496_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com",
+    contenido: "Juventud, cocina",
+    nombre: "Nikol Morillo ",
+    seguidoresYoutube:"0",
+    alcanceVideo:"0",
+    seguidoresInstagram:"8,529",
+    alcancePost:"2,105"
+  },
+  {
+    foto:"https://scontent-mia3-2.cdninstagram.com/vp/0a7ae787178a67cfa413b540cc8ec8a1/5CED23B0/t51.2885-19/s150x150/47034018_310385589582138_2190796172682067968_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com",
+    contenido: "Juventud, experimentos",
+    nombre: "Ducktape",
+    seguidoresYoutube:"228,000",
+    alcanceVideo:"202, 320",
+    seguidoresInstagram:"101,000",
+    alcancePost:"51, 321"
+  },
+  {
+    foto:"https://scontent-mia3-2.cdninstagram.com/vp/c9f971c5d5cdc24da5119d14532cfb31/5CF0BA37/t51.2885-19/s150x150/49698591_2226536634065261_6408179222396796928_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com",
+    contenido: "Juventud, superación",
+    nombre: "Leidyn Bernardez",
+    seguidoresYoutube:"0",
+    alcanceVideo:"0",
+    seguidoresInstagram:"75, 900",
+    alcancePost:"37, 500"
+  },
+  {
+    foto:"https://scontent-mia3-2.cdninstagram.com/vp/9a7ebb58ec7578f9d555996502e93538/5CDB15AB/t51.2885-19/s150x150/51276129_543124359500647_3046431195089862656_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com",
+    contenido: "Juventud",
+    nombre: "Juan Luis Minaya",
+    seguidoresYoutube:"4, 900",
+    alcanceVideo:"14, 700",
+    seguidoresInstagram:"45, 400",
+    alcancePost:"35, 300"
+  },
 ]
 
 

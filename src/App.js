@@ -11,7 +11,7 @@ class App extends Component {
 
   state =
     {
-      logged: true
+      logged: false
     }
 
     componentDidMount()

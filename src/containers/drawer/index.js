@@ -177,6 +177,7 @@ class Login extends Component {
                     {open && window.mobilecheck() && <Typography variant="headline">Publigram</Typography>}                    
                     <p style={{margin: 30}} >
                     {!window.mobilecheck() && <Typography style={{color: "white", opacity: 0.3}} variant="display1">Publigram</Typography>}
+                    {/* {!window.mobilecheck() && <img src="https://i.imgur.com/BpCdqjx.png" width={150} />} */}
                     </p>
                     <IconButton style={{display:displayItems}} onClick={() => closeDrawer()}>
                         <ChevronLeftIcon className={classes.chevronleft} />
@@ -201,24 +202,7 @@ class Login extends Component {
                             </ListItemIcon>
                             <ListItemText classes={{ primary: (actualPage == "historial") ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Historial" />
                         </ListItem>
-                    </Link>
-                    {/* Personal */}
-                    <ListItem button className={classNames({ [classes.listSelected]: (this.expandPersonal()), [classes.listNoSelected]: !(this.expandPersonal()) })} onClick={() => this.handleExpand("personal")}>
-                        <ListItemIcon button>
-                            <IconEmployees className={classNames({ [classes.iconsOpen]: open, [classes.iconsClose]: !open })} />
-                        </ListItemIcon>
-                        <ListItemText classes={{ primary: (this.expandPersonal()) ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Personal" />
-                        {menu.personal ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-                    <Collapse in={menu.personal} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                            <Link to="/personal/administrative" className={classes.link}>
-                                <ListItem button className={classes.nested} onClick={() => this.RedirectToPage("administrativo")}>
-                                    <ListItemText classes={{ primary: actualPage == "administrativo" ? classes.subMenu_selected : classes.subMenu_noselected }} primary="Administrative" />
-                                </ListItem>
-                            </Link>                            
-                        </List>
-                    </Collapse>                                        
+                    </Link>                              
                     {/* Influencers */}
                     <ListItem button className={classNames({ [classes.listSelected]: (this.expandInfluencers()), [classes.listNoSelected]: !(this.expandInfluencers()) })} onClick={() => this.handleExpand("influencers")}>
                         <ListItemIcon button>
