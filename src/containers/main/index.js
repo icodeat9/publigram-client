@@ -177,7 +177,9 @@ class Main extends Component {
                             </Typography>
 
                             
-                                John Watson
+                                John Watson 
+                                <br/>
+                                Balance: USD $34, 245
                                 <IconButton
                                 className={classes.menuButton}
                                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
