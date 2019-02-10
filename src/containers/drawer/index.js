@@ -176,7 +176,7 @@ class Login extends Component {
                 <div className={classes.toolbar} >                    
                     {open && window.mobilecheck() && <Typography variant="headline">Publigram</Typography>}                    
                     <p style={{margin: 30}} >
-                    {!window.mobilecheck() && <Typography style={{color: "white", opacity: 0.3}} variant="display1">Publigram</Typography>}
+                    {!window.mobilecheck() && <Typography style={{color: "white", opacity: 1}} variant="display1">Publigram</Typography>}
                     {/* {!window.mobilecheck() && <img src="https://i.imgur.com/BpCdqjx.png" width={150} />} */}
                     </p>
                     <IconButton style={{display:displayItems}} onClick={() => closeDrawer()}>
